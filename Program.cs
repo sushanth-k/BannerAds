@@ -8,13 +8,15 @@ namespace BannerAds
 {
     class Program
     {
-        static List<Result> resultsList, adToBeDisplayed;
+        static List<Result> resultsList;
+        static int totalShots = 0;
         static void Main(string[] args)
         {
             GetAd prog = new GetAd();
+            //AdGenerator prog = new AdGenerator();
             resultsList = new List<Result>();
             Result adToBeDisplayed = new Result();       
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 adToBeDisplayed = prog.getAdvertisement();
                 if (resultsList.Exists(x => x.Product == adToBeDisplayed.Product))
@@ -29,10 +31,14 @@ namespace BannerAds
             }     
             
             Console.WriteLine("Product" + " " + "Frequency");
-            foreach (var item in resultsList)
+            foreach (var item in resultsList.OrderByDescending(c=>c.Weight))
             {
-                Console.WriteLine(item.Product + " " + item.Frequency);
+                Console.WriteLine(item.Product + " " + item.Frequency);                
+                totalShots = totalShots + item.Frequency;
+               
             }
+            Console.WriteLine("Total {0}", totalShots);
+            
             Console.ReadLine();
         }      
         }

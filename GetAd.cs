@@ -8,26 +8,25 @@ namespace BannerAds
 {
     class GetAd
     {
-        static List<Ads> adsList;
-        static List<Result> resultsList;
-        static Random rnd = new Random();
+        static List<Ads> adsList;    
+        static Random rnd = new Random();       
         public Result  getAdvertisement() 
         {
             int minWeight, maxWeight = 0;
             #region Products Initialization
             adsList = new List<Ads>();
-            adsList.Add(new Ads("c101", "SLR Camera", 13));
-            adsList.Add(new Ads("c102", "Hybrid Camera", 13));
-            adsList.Add(new Ads("c103", "Pocket Camera", 12));
-            adsList.Add(new Ads("l101", "Telephoto Lens", 11));
-            adsList.Add(new Ads("l102", "Macro Lens", 8));
-            adsList.Add(new Ads("l103", "2X Lens", 6));
-            adsList.Add(new Ads("l104", "100mm Lens", 7));
-            adsList.Add(new Ads("l105", "50mm Lens", 7));
-            adsList.Add(new Ads("l106", "25mm Lens", 7));
-            adsList.Add(new Ads("l107", "30-80mm Zoom Lens", 8));
-            adsList.Add(new Ads("m101", "Micro Fiber Cloth", 3));
-            adsList.Add(new Ads("m102", "Anti-Static Brush", 5));
+            adsList.Add(new Ads("c101", "SLR Camera", 13,13));
+            adsList.Add(new Ads("c102", "Hybrid Camera", 13,26));
+            adsList.Add(new Ads("c103", "Pocket Camera", 12,38));
+            adsList.Add(new Ads("l101", "Telephoto Lens", 11,49));
+            adsList.Add(new Ads("l102", "Macro Lens", 8,57));
+            adsList.Add(new Ads("l103", "2X Lens", 6,63));
+            adsList.Add(new Ads("l104", "100mm Lens", 7,70));
+            adsList.Add(new Ads("l105", "50mm Lens", 7,77));
+            adsList.Add(new Ads("l106", "25mm Lens", 7,84));
+            adsList.Add(new Ads("l107", "30-80mm Zoom Lens", 8,92));
+            adsList.Add(new Ads("m101", "Micro Fiber Cloth", 3,95));
+            adsList.Add(new Ads("m102", "Anti-Static Brush", 5,100));
             #endregion
 
             TimeSpan start = new TimeSpan(9, 0, 0); //9 o'clock
@@ -53,30 +52,15 @@ namespace BannerAds
                 maxWeight = adsList.OrderByDescending(c => c.Weight).First().Weight;               
             }
 
-            Result adToBeDisplayed = GetAdToBeDisplayed(minWeight, maxWeight); //Select product based on the variable weights
-
-            /*resultsList = new List<Result>();
-            if (resultsList.Contains(adToBeDisplayed))
-            {
-                var ad = resultsList.FirstOrDefault(c => c.Product == adToBeDisplayed.Product);
-                ad.Frequency += 1; //If the result set already has the product displayed on banner then increment frequency
-            }
-            else
-            {
-                resultsList.Add(new Result() { Product = adToBeDisplayed.Product, Weight = adToBeDisplayed.Weight, Frequency = adToBeDisplayed.Frequency });
-            }*/
-            //resultsList.Add(new Result() { Product = adToBeDisplayed.Product, Weight = adToBeDisplayed.Weight, Frequency = adToBeDisplayed.Frequency });
+            Result adToBeDisplayed = GetAdToBeDisplayed(minWeight, maxWeight); //Select product based on the variable weights            
             return adToBeDisplayed;
-            //PrintAdsDisplayed();
-
-            //Console.ReadLine();
-
         }
 
         private static Result GetAdToBeDisplayed(int minWeight, int maxWeight)
         {
-            //Random rnd = new Random();
-            Ads probableList;
+      
+            Ads probableList;       
+           // probableList = adsList.Where(c => c.Weight == maxWeight).FirstOrDefault();                      
             try
             {
                  probableList = adsList.Where(c => c.Weight == rnd.Next(minWeight, maxWeight)).FirstOrDefault();
@@ -93,18 +77,7 @@ namespace BannerAds
             var result = new Result(){Product = probableList.Tag, Weight= probableList.Weight, Frequency=1};
             return result;
         }
-
-        private static void PrintAdsDisplayed()
-        {
-            Console.WriteLine("Product" + " " + "Frequency");
-            foreach (var item in resultsList)
-            {
-                Console.WriteLine(item.Product + " " + item.Frequency);
-            }
-        }
-
-        
-        
+             
     }   
 }
 
