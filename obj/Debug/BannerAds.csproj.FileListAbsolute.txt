@@ -1,0 +1,6 @@
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\bin\Debug\BannerAds.exe.config
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\bin\Debug\BannerAds.exe
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\bin\Debug\BannerAds.pdb
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\obj\Debug\BannerAds.exe
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\obj\Debug\BannerAds.pdb
+c:\users\sushanth\documents\visual studio 2012\Projects\BannerAds\BannerAds\obj\Debug\BannerAds.csprojResolveAssemblyReference.cache
